@@ -29,7 +29,7 @@
       menu.inert = !open;
       if (main) main.inert = open;
       if (footer) footer.inert = open;
-      document.body.classList.toggle("menu-open", open);
+      root.classList.toggle("menu-open", open);
       if (open) {
         lenis?.stop();
         menuLinks[0]?.focus({ preventScroll: true });
@@ -86,8 +86,7 @@
         smoothWheel: true,
         syncTouch: false,
       });
-      if (document.body.classList.contains("menu-open") || document.hidden)
-        lenis.stop();
+      if (root.classList.contains("menu-open") || document.hidden) lenis.stop();
     }
   }
   updateScrolling();
@@ -95,7 +94,7 @@
   reduceMotion.addEventListener("change", updateScrolling);
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) lenis?.stop();
-    else if (!document.body.classList.contains("menu-open")) lenis?.start();
+    else if (!root.classList.contains("menu-open")) lenis?.start();
   });
 
   document.addEventListener("click", (event) => {

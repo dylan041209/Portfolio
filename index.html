@@ -60,10 +60,10 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="vendor/lenis.css" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20261020-2" />
     <script src="vendor/gsap.min.js" defer></script>
     <script src="vendor/lenis.min.js" defer></script>
-    <script src="script.js" defer></script>
+    <script src="script.js?v=20261020-2" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -86,13 +86,18 @@
       >
         <span></span><span></span>
       </button>
-      <nav id="site-menu" class="site-menu" aria-label="Main navigation">
-        <a href="#home">Home</a><a href="#about">About</a
-        ><a href="#experience">Experience</a><a href="#education">Education</a
-        ><a href="#projects">Projects</a><a href="#cv">CV</a
-        ><a href="#contact">Contact</a>
-      </nav>
     </header>
+    <nav
+      id="site-menu"
+      class="site-menu"
+      data-lenis-prevent
+      aria-label="Main navigation"
+    >
+      <a href="#home">Home</a><a href="#about">About</a
+      ><a href="#experience">Experience</a><a href="#education">Education</a
+      ><a href="#projects">Projects</a><a href="#cv">CV</a
+      ><a href="#contact">Contact</a>
+    </nav>
 
     <main id="main-content" tabindex="-1">
       <section id="home" class="hero section-shell">
@@ -128,9 +133,9 @@
             A curious, capable person who enjoys helping ideas take shape.
           </h2>
           <p class="lead">
-            I'm completing A-Levels in Business, IT and Criminology, where I've
-            developed a genuine interest in marketing, digital work and creating
-            effective campaigns.
+            I'm studying BTEC Business and IT alongside WJEC Level 3
+            Criminology, where I've developed a genuine interest in marketing,
+            digital work and creating effective campaigns.
           </p>
           <p>
             Whether I'm helping customers on the shop floor, creating campaign
@@ -190,7 +195,7 @@
               <p class="card-label">Paulet High School & Sixth Form</p>
               <h3>Level 3 studies</h3>
               <p>
-                Business, IT and Criminology<br /><span
+                BTEC Business, BTEC IT and WJEC Criminology<br /><span
                   >September 2025 - June 2027</span
                 >
               </p>
@@ -240,22 +245,28 @@
         <div class="project-grid">
           <a class="project-card" href="marketing-campaign.html"
             ><p>01</p>
+            <div class="project-art" aria-hidden="true">
+              <div class="project-shape shape-one"></div>
+            </div>
             <h3>Marketing campaign</h3>
-            <span>Business coursework <b>View project &rarr;</b></span>
-            <div aria-hidden="true" class="project-shape shape-one"></div
-          ></a>
+            <span>Business coursework <b>View project &rarr;</b></span></a
+          >
           <a class="project-card" href="website-creation.html"
             ><p>02</p>
+            <div class="project-art" aria-hidden="true">
+              <div class="project-shape shape-two"></div>
+            </div>
             <h3>Website creation</h3>
-            <span>IT qualification <b>View project &rarr;</b></span>
-            <div aria-hidden="true" class="project-shape shape-two"></div
-          ></a>
+            <span>IT qualification <b>View project &rarr;</b></span></a
+          >
           <a class="project-card" href="campaign-assets.html"
             ><p>03</p>
+            <div class="project-art" aria-hidden="true">
+              <div class="project-shape shape-three"></div>
+            </div>
             <h3>Campaign assets</h3>
-            <span>Creative work <b>View project &rarr;</b></span>
-            <div aria-hidden="true" class="project-shape shape-three"></div
-          ></a>
+            <span>Creative work <b>View project &rarr;</b></span></a
+          >
         </div>
       </section>
 
@@ -268,7 +279,10 @@
             details.
           </p>
         </div>
-        <a class="button button-light" href="Dylan-Titley-CV-2026-Degree-Apprenticeship.docx" download
+        <a
+          class="button button-light"
+          href="Dylan-Titley-CV-2026-Degree-Apprenticeship.docx"
+          download
           >Download CV <span>&nearr;</span></a
         >
       </section>

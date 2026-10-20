@@ -3,6 +3,7 @@
   --paper: #f6f4ef;
   --lime: #d9ef53;
   --coral: #ff7855;
+  --accent-ink: #a8381c;
   --line: rgba(23, 33, 33, 0.18);
   --muted: #586362;
 }
@@ -12,10 +13,11 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 96px;
-  overflow-x: clip;
+  scrollbar-gutter: stable;
 }
 body {
   margin: 0;
+  padding-top: 80px;
   background: var(--paper);
   color: var(--ink);
   font-family: Manrope, Arial, sans-serif;
@@ -27,11 +29,12 @@ body {
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--line);
-  position: sticky;
-  top: 0;
+  position: fixed;
+  inset: 0 0 auto;
+  width: 100%;
   background: rgba(246, 244, 239, 0.94);
   backdrop-filter: blur(12px);
-  z-index: 10;
+  z-index: 20;
 }
 .brand {
   display: flex;
@@ -41,7 +44,7 @@ body {
   text-decoration: none;
 }
 .brand span {
-  color: var(--coral);
+  color: var(--accent-ink);
 }
 .menu-toggle {
   width: 48px;
@@ -71,14 +74,14 @@ body {
 }
 .site-menu {
   position: fixed;
-  inset: 0 0 auto auto;
+  inset: 80px 0 0 auto;
   width: min(430px, 100%);
-  height: 100vh;
-  height: 100dvh;
+  height: calc(100vh - 80px);
+  height: calc(100dvh - 80px);
   overflow-y: auto;
   overscroll-behavior: contain;
   background: var(--ink);
-  padding: 120px clamp(34px, 6vw, 80px);
+  padding: 36px clamp(34px, 6vw, 80px);
   visibility: hidden;
   clip-path: inset(0 0 0 100%);
   transition:
@@ -87,7 +90,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  z-index: 11;
+  z-index: 19;
 }
 .site-menu.open {
   transition-delay: 0s;
@@ -278,7 +281,7 @@ h2 {
   display: block;
 }
 .timeline-meta span + span {
-  color: var(--coral);
+  color: var(--accent-ink);
 }
 h3 {
   font-size: clamp(22px, 3vw, 38px);
@@ -365,7 +368,7 @@ h3 span {
 }
 .project-card h3 {
   font-size: 27px;
-  margin: auto 0 5px;
+  margin: 0 0 8px;
   z-index: 1;
 }
 .project-card span {
@@ -422,7 +425,7 @@ h3 span {
   padding-bottom: 130px;
 }
 .contact-section .eyebrow {
-  color: var(--coral);
+  color: var(--accent-ink);
 }
 .contact-section h2 {
   margin: 0 auto 28px;
@@ -433,7 +436,7 @@ h3 span {
   letter-spacing: -0.055em;
   color: var(--ink);
   font-weight: 700;
-  text-decoration-color: var(--coral);
+  text-decoration-color: var(--accent-ink);
   text-underline-offset: 8px;
 }
 .contact-section p {
@@ -544,7 +547,7 @@ footer a {
     monospace;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--coral);
+  color: var(--accent-ink);
 }
 .back-link {
   color: var(--ink);
@@ -639,7 +642,7 @@ footer a {
   font:
     500 11px "DM Mono",
     monospace;
-  color: var(--coral);
+  color: var(--accent-ink);
 }
 .process-grid h3 {
   font-size: 27px;
@@ -716,7 +719,7 @@ footer a {
   padding-bottom: 4px;
 }
 .linkedin-link:hover {
-  color: var(--coral);
+  color: var(--accent-ink);
 }
 .asset-logo {
   margin: 0;
@@ -794,7 +797,7 @@ main:focus {
   outline: none;
 }
 :focus-visible {
-  outline: 3px solid #bd3a19;
+  outline: 3px solid var(--ink);
   outline-offset: 5px;
 }
 .hero :focus-visible,
@@ -816,19 +819,18 @@ main:focus {
 .skip-link:focus {
   transform: translateY(0);
 }
-.menu-toggle.open {
-  border-color: var(--paper);
-}
-.menu-toggle.open span {
-  background: var(--paper);
-}
-.menu-open {
+html.menu-open {
   overflow: hidden;
 }
 html:not(.has-js) .menu-toggle {
   display: none;
 }
+html:not(.has-js) body {
+  padding-top: 0;
+}
 html:not(.has-js) .site-header {
+  position: sticky;
+  top: 0;
   height: auto;
   min-height: 80px;
   flex-wrap: wrap;
@@ -906,7 +908,7 @@ html:not(.has-js) .site-menu a {
     gap: 18px;
   }
   .site-menu {
-    padding-top: 96px;
+    padding-top: 28px;
     padding-bottom: 24px;
   }
   footer {
@@ -931,4 +933,89 @@ html:not(.has-js) .site-menu a {
 }
 html.lenis {
   scroll-behavior: auto;
+}
+
+/* Keep card decoration in its own region, above the text. */
+.project-art {
+  position: relative;
+  height: 150px;
+  flex: 0 0 150px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  pointer-events: none;
+}
+.project-art .project-shape {
+  width: 128px;
+  top: 10px;
+  right: 20px;
+}
+.project-card > p {
+  margin-bottom: 14px;
+}
+.projects-section .section-heading p {
+  color: var(--ink);
+}
+@media (max-width: 720px) {
+  .project-card {
+    min-height: 0;
+  }
+  .project-art {
+    height: 120px;
+    flex-basis: 120px;
+  }
+  .project-art .project-shape {
+    width: 105px;
+  }
+}
+/* The menu stays in normal document flow when JavaScript is unavailable. */
+html:not(.has-js) .site-menu {
+  gap: 16px;
+  padding: 16px clamp(22px, 5vw, 74px);
+  border-bottom: 1px solid var(--line);
+}
+.project-gallery {
+  background: #e3e0d9;
+}
+.project-gallery > p:not(.eyebrow) {
+  max-width: 650px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.project-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  margin-top: 36px;
+}
+.project-gallery figure {
+  margin: 0;
+  min-width: 0;
+}
+.project-gallery figure > a {
+  display: block;
+  background: var(--ink);
+}
+.project-gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.project-gallery figcaption {
+  margin-top: 14px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.project-gallery figcaption strong {
+  display: block;
+  margin-bottom: 4px;
+}
+.project-gallery .gallery-note {
+  font-size: 14px;
+  margin-top: 28px;
+}
+@media (max-width: 720px) {
+  .project-gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
 }
